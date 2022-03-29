@@ -1,6 +1,4 @@
-## Protip web sjedišta
-
-> U ovom direktoriju nalazi se prototip web sjedišta.
+## DZ2
 
 Ovdje možete pogledati [dijagram baze podataka](https://dev.mysql.com/doc/employee/en/sakila-structure.html).
 
