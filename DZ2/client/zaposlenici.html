@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive-table.css">
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <title>Sustav upravljenja zaposlenicima</title>
+
+    <script>
+      function showResult(str) {
+        if (str.length==0) {
+          document.getElementById("livesearch").innerHTML="";
+          document.getElementById("livesearch").style.border="0px";
+          return;
+        }
+        var xmlhttp=new XMLHttpRequest();
+        xmlhttp.onreadystatechange=function() {
+          if (this.readyState==4 && this.status==200) {
+            document.getElementById("livesearch").innerHTML=this.responseText;
+            document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+          }
+        }
+        xmlhttp.open("GET","/dz2/server/employees_search.php?q="+str,true);
+        xmlhttp.send();
+      }
+      </script>
+
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <header class="header">
+        <div class="menu-icon">
+            <svg class="navigation_icon">
+                <use xlink:href="img/sprite.svg#icon-dehaze"></use>
+            </svg>  
+        </div>
+        
+        <div class="organisation_data"></div>
+        <div class="user_nav">
+            <div class="round_btn">
+                <svg class="user_icon">
+                    <use xlink:href="img/sprite.svg#icon-notifications"></use>
+                </svg>  
+            </div>
+
+            <img src="img/avatar.jpg" alt="Avatar" class="avatar">
+        </div>
+      </header>
+
+      <aside class="aside">
+        <div class="aside_close-icon">
+          <strong>&times;</strong>
+        </div>
+
+        <div class="logo_box">
+            <img src="img/logo.png" alt="Sustav upravljenja zaposlenicima logo" class="logo">
+            <h1 class="logo_heading">EmplooS</h1>   
+        </div>
+        
+
+        <ul class="aside_list">
+            <a href="/">
+                <li class="aside_list-item">
+                    <svg class="navigation_icon">
+                        <use xlink:href="img/sprite.svg#icon-dashboard"></use>
+                    </svg>  
+                    Pregled
+                </li>  
+            </a>
+            <a href="/">
+                <li class="aside_list-item active">
+                    <svg class="navigation_icon active">
+                        <use xlink:href="img/sprite.svg#icon-groups"></use>
+                    </svg>  
+                    Zaposlenici
+                </li>  
+            </a>
+            <a href="/">
+                <li class="aside_list-item">
+                    <svg class="navigation_icon">
+                        <use xlink:href="img/sprite.svg#icon-workspaces_filled"></use>
+                    </svg>  
+                    Odjeli
+                </li>  
+            </a>
+            <a href="/">
+                <li class="aside_list-item">
+                    <svg class="navigation_icon">
+                        <use xlink:href="img/sprite.svg#icon-work"></use>
+                    </svg>  
+                    Radna mjesta
+                </li>  
+            </a>
+
+        </ul>
+        <div class="help_box">
+            <span class="help-title">Trebate pomoć?</span><br>
+            <span class="help-subtitle">Otvorite naš centar za pomoć</span>
+        </div>
+      </aside>
+      <main class="main">
+
+        <div class="employee_table">
+            <div class="section_heading-box justify-between">
+              <h3>Pregled zaposlenika</h3>
+              <form class="search-box">
+                <input type="text" placeholder="Pretraga zaposlenika..." id="employee_search" class="search-input" onkeyup="showResult(this.value)">
+                <div id="livesearch"></div>
+              </form>
+
+            </div>
+
+            <ul class="responsive-table">
+              <li class="table-header">
+                <div class="col col-1">ID</div>
+                <div class="col col-2">Ime i prezime</div>
+                <div class="col col-3">Plaća</div>
+                <div class="col col-4">Odjel</div>
+              </li>
+              <li class="table-row">
+                <div class="col col-1" data-label="ID">42</div>
+                <div class="col col-2" data-label="Customer Name">John Doe</div>
+                <div class="col col-3" data-label="Plaća">2350</div>
+                <div class="col col-4" data-label="Payment Status">Odjel 1</div>
+              </li>
+              <li class="table-row">
+                <div class="col col-1" data-label="ID">12</div>
+                <div class="col col-2" data-label="Customer Name">Jennifer Smith</div>
+                <div class="col col-3" data-label="Plaća">3220</div>
+                <div class="col col-4" data-label="Payment Status">Odjel 2</div>
+              </li>
+              <li class="table-row">
+                <div class="col col-1" data-label="ID">78</div>
+                <div class="col col-2" data-label="Customer Name">John Smith</div>
+                <div class="col col-3" data-label="Plaća">1341</div>
+                <div class="col col-4" data-label="Payment Status">Odjel 3</div>
+              </li>
+              <li class="table-row">
+                <div class="col col-1" data-label="ID">45</div>
+                <div class="col col-2" data-label="Customer Name">John Carpenter</div>
+                <div class="col col-3" data-label="Plaća">4115</div>
+                <div class="col col-4" data-label="Payment Status">Odjel 4</div>
+              </li>
+     
+        </div>
+
+      </main>
+      <footer class="footer">
+        <div class="footer_copyright">&copy;2022 Ante Kvesić & Vjekoslav Rezić</div>
+      </footer>
+    </div>
+
+    <script src="js/drawer.js"></script>
+  </body>
+</html>
