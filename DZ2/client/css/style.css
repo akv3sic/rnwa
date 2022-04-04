@@ -218,9 +218,20 @@ a {
     display: flex;
     align-items: center;
   }
+  .employees-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    color: black;
+  }
 
   .justify-between {
     justify-content: space-between;
+  }
+  .search-box {
+    position: relative;
+    display: block;
   }
 
   .search-input {
@@ -230,14 +241,34 @@ a {
     border: 0px;
   }
 
-  #livesearch {
+  #search-suggestions {
+    display: none;
+    position: absolute;
+    z-index: 999;
     color: black;
     z-index: 10;
-    height: 10vh;
-    overflow-y: auto;
+    height: 15vh;
     padding: 10px;
-    overflow-x: hidden;
     list-style: none;
+    top: 50px;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+  }
+
+  #search-suggestions a {
+    color: black !important;
+  }
+
+  #search-suggestions :hover {
+    color: #E99047 !important;
+  }
+
+  #search-suggestions::-webkit-scrollbar {
+    width: 5px;
+    background-color: #f5f5f5;
   }
 
   .section_heading-box h3 {
