@@ -6,7 +6,7 @@ namespace api;
 
 public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 {
-	private const string _dateFormat = "yyyyMMdd";
+	private const string _dateFormat = "dd.MM.yyyy.";
 	public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
         return DateOnly.ParseExact(reader.GetString(), _dateFormat, CultureInfo.InvariantCulture);
