@@ -24,6 +24,7 @@ namespace api.Models
         public virtual DbSet<Employee> Employees { get; set; } = null!;
         public virtual DbSet<Salary> Salaries { get; set; } = null!;
         public virtual DbSet<Title> Titles { get; set; } = null!;
+        public virtual DbSet<User> Users { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -174,7 +175,6 @@ namespace api.Models
 
                 entity.Property(e => e.EmpNo)
                     .HasColumnType("int(11)")
-                    .ValueGeneratedNever()
                     .HasColumnName("emp_no");
 
                 entity.Property(e => e.BirthDate).HasColumnName("birth_date");
@@ -244,6 +244,36 @@ namespace api.Models
                     .WithMany(p => p.Titles)
                     .HasForeignKey(d => d.EmpNo)
                     .HasConstraintName("titles_ibfk_1");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.ToTable("users");
+
+                entity.Property(e => e.Id)
+                    .HasColumnType("bigint(20) unsigned")
+                    .HasColumnName("id");
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("created_at")
+                    .HasDefaultValueSql("current_timestamp()");
+
+                entity.Property(e => e.Email)
+                    .HasMaxLength(255)
+                    .HasColumnName("email");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(64)
+                    .HasColumnName("name");
+
+                entity.Property(e => e.Password)
+                    .HasMaxLength(255)
+                    .HasColumnName("password");
+
+                entity.Property(e => e.Surname)
+                    .HasMaxLength(64)
+                    .HasColumnName("surname");
             });
 
             OnModelCreatingPartial(modelBuilder);

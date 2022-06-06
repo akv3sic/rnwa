@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Configuration;
 using api;
 using JsonOptions = Microsoft.AspNetCore.Mvc.JsonOptions;
+using Microsoft.AspNetCore.Authentication;
+using api.Handlers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+
+builder.Services.AddAuthentication("BasicAuthentication")
+                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
 //services cors
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
@@ -39,6 +46,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

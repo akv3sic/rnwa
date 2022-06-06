@@ -60,7 +60,12 @@
 
       const getEmployees = async () => {
         try {
-          const response = await axios.get(`${BASE_URL}/Employees`);
+          const response = await axios.get(`${BASE_URL}/Employees`, {
+              headers: {
+                Authorization: 'Basic YW50ZUB0ZXN0LmJhOnNpZnJhMTIz' 
+              }
+            }
+          );
 
           const employees = response.data;
           setEmployees(employees)
