@@ -17,7 +17,8 @@ body {
   margin-bottom: 60px;
 }
 
-.rm-border {
+.date-box {
     outline: none;
     border: none;
+    background: inherit;
 }
