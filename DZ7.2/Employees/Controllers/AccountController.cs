@@ -36,7 +36,7 @@ namespace Employees.Controllers
             }
             else
             {
-                ViewBag.msg = "Pogrešno korisničko ime ili lozinka";
+                ViewBag.msg = "Pogrešno korisničko ime ili lozinka!";
                 return View("Index");
             }
         }
@@ -44,7 +44,8 @@ namespace Employees.Controllers
         [Route("welcome")]
         public IActionResult Welcome()
         {
-            //ViewBag.username = HttpContext.Session.GetString("username");
+            ViewBag.username = HttpContext.Session.GetString("username");
+            Console.WriteLine("korisnicko ime: " + ViewBag.username);
             return View();
         }
 

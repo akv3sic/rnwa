@@ -22,13 +22,17 @@
             
         <div class="organisation_data"></div>
         <div class="user_nav">
-            <div class="round_btn">
-                <svg class="user_icon">
-                    <use xlink:href="img/sprite.svg#icon-notifications"></use>
-                </svg>  
-            </div>
-
-            <img src="~/img/avatar.jpg" alt="Avatar" class="avatar">
+            @if(@ViewBag.username != null)
+            {
+                <span class="">@ViewBag.username</span>
+                <img src="~/img/avatar.jpg" alt="Avatar" class="avatar">
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Account" asp-action="Index">
+                    Prijava
+                </a>
+            }  
         </div>
         </header>
 
@@ -68,7 +72,6 @@
                     Odjeli
                 </li>  
             </a>
-
         </ul>
         <div class="help_box">
             <span class="help-title">Trebate pomoć?</span><br>

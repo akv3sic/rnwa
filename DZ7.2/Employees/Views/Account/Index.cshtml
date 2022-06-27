@@ -1,10 +1,16 @@
-<h3>Login</h3>
-<span>@ViewBag.msg</span>
+<h3>Prijava</h3>
+
+@if(@ViewBag.msg != null)
+{
+    <div class="alert alert-warning" role="alert">
+    @ViewBag.msg
+    </div>
+}
 <form asp-action="login"  asp-controller="account" method="post">
     <span>Username</span>
     <input type="text" name="username">
     <br>
-    <span>Password</span>
+    <span>Lozinka</span>
     <input type="password" name="password">
     <br>
     <input type="submit" value="Login">
