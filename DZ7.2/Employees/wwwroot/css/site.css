@@ -16,3 +16,9 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.date-box {
+    outline: none;
+    border: none;
+    background: inherit;
+}

@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<Employees.Models.Employee>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pregled zaposlenika";
+    ViewBag.Current = "Employees";
 }
 
-<h1>Index</h1>
+<h1>Pregled zaposlenika</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Dodaj novog</a>
 </p>
 <table class="table">
     <thead>
@@ -32,9 +33,9 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
+            <tr>
+                <td>
+                @Html.TextBoxFor(modelItem => item.BirthDate, "{0:dd/MM/yyyy}", new{@class="date-box", @readonly=true})
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -46,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Gender)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HireDate)
+                @Html.TextBoxFor(modelItem => item.HireDate, "{0:dd/MM/yyyy}", new{@class="date-box", @readonly=true})
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.EmpNo">Edit</a> |
