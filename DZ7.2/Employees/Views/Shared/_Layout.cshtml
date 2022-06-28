@@ -3,47 +3,95 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Employees</title>
+    <title>@ViewData["Title"] - Emploos</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Employees.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Employees</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Employees - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="grid-container">
+        <header class="header">
+        <div class="menu-icon">
+            <svg class="navigation_icon">
+                <use xlink:href="img/sprite.svg#icon-dehaze"></use>
+            </svg>  
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+            
+        <div class="organisation_data"></div>
+        <div class="user_nav">
+            @if(@ViewBag.username != null)
+            {
+                <span class="">@ViewBag.username</span>
+                <img src="~/img/avatar.jpg" alt="Avatar" class="avatar">
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Account" asp-action="Index">
+                    Prijava
+                </a>
+            }  
+        </div>
+        </header>
+
+        <aside class="aside">
+        <div class="aside_close-icon">
+            <strong>&times;</strong>
+        </div>
+
+        <div class="logo_box mt-3">
+            <img src="~/img/logo.png" alt="Sustav upravljenja zaposlenicima logo" class="logo">
+            <h1 class="logo_heading">EmplooS</h1>   
+        </div>
+            
+
+        <ul class="aside_list">
+            <a href="/">
+                <li class="aside_list-item">
+                    <svg class="navigation_icon">
+                        <use xlink:href="img/sprite.svg#icon-dashboard"></use>
+                    </svg>  
+                    Pregled
+                </li>  
+            </a>
+            <a asp-area="" asp-controller="Employees" asp-action="Index">
+                <li class="aside_list-item">
+                    <svg class="navigation_icon" class="">
+                        <use xlink:href="img/sprite.svg#icon-groups"></use>
+                    </svg>  
+                    Zaposlenici
+                </li>  
+            </a>
+            <a asp-area="" asp-controller="Departments" asp-action="Index">
+                <li class="aside_list-item">
+                    <svg class="navigation_icon">
+                        <use xlink:href="img/sprite.svg#icon-workspaces_filled"></use>
+                    </svg>  
+                    Odjeli
+                </li>  
+            </a>
+        </ul>
+        <div class="help_box">
+            <span class="help-title">Trebate pomoć?</span><br>
+            <span class="help-subtitle">Otvorite naš centar za pomoć</span>
+        </div>
+        </aside>
+        <main class="main">
+            <div class="container">
+              @RenderBody()  
+            </div>
+            
+        </main>
+
+      <footer class="footer">
+        <div class="footer_copyright">&copy;2022 Ante Kvesić i Vjekoslav Rezić</div>
+      </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await RenderSectionAsync("Scripts", required: false)
+    </div>
 </body>
 </html>

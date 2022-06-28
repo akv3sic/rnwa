@@ -14,7 +14,7 @@
             @Html.DisplayNameFor(model => model.BirthDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
+            @Html.TextBoxFor(model => model.BirthDate, "{0:dd/MM/yyyy}", new{@class="date-box", @readonly=true})
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
@@ -38,7 +38,7 @@
             @Html.DisplayNameFor(model => model.HireDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HireDate)
+            @Html.TextBoxFor(model => model.HireDate, "{0:dd/MM/yyyy}", new{@class="date-box", @readonly=true})
         </dd>
     </dl>
 </div>
